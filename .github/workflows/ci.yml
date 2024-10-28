@@ -21,36 +21,24 @@ jobs:
 
   Dev_A:
     runs-on: ubuntu-latest
+    environment: Dev_A
     needs: Build
     steps:
     - name: Deploy to Dev A
-      # uses: JamesIves/github-pages-deploy-action@releases/v3
-      # with:
-      #   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      #   BRANCH: gh-pages
-      #   FOLDER: build
       run: echo "Demo for dev deploy"
   
-  Dev_b:
+  Dev_B:
     runs-on: ubuntu-latest
+    environment: Dev_B
     needs: Build
     steps:
     - name: Deploy to Dev B
-      # uses: JamesIves/github-pages-deploy-action@releases/v3
-      # with:
-      #   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      #   BRANCH: gh-pages
-      #   FOLDER: build
       run: echo "Demo for dev deploy"    
 
   Production:
     runs-on: ubuntu-latest
+    environment: Production
     needs: [Dev_A, Dev_B]
     steps:
     - name: Deploy to Prd
-      # uses: JamesIves/github-pages-deploy-action@releases/v3
-      # with:
-      #   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      #   BRANCH: gh-pages
-      #   FOLDER: build
       run: echo "Demo for prd deploy"    
